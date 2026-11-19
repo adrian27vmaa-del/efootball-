@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eFootball Mobile • Stats Co-oP & VS Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;0,900;1,800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #060918;
+      --bg-card: rgba(14, 22, 52, 0.78);
+      --bg-card-hover: rgba(24, 38, 86, 0.92);
+      --ef-blue: #0033ff;
+      --ef-cyan: #00e5ff;
+      --ef-yellow: #ffe600;
+      --ef-pink: #ff007a;
+      --gold: #ffd700;
+      --silver: #e2e8f0;
+      --bronze: #cd7f32;
+      --text-main: #ffffff;
+      --text-muted: #94a3b8;
+      --border-glow: rgba(0, 229, 255, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(0, 51, 255, 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(255, 0, 122, 0.18) 0%, transparent 45%);
+    }
+
+    /* HERO COVER FOTBAL */
+    .hero {
+      position: relative;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.5rem 1.5rem 2rem;
+      background: 
+        linear-gradient(180deg, rgba(6, 9, 24, 0.35) 0%, rgba(6, 9, 24, 0.85) 65%, var(--bg-dark) 100%),
+        url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      border-bottom: 2px solid var(--ef-cyan);
+      box-shadow: 0 10px 40px rgba(0, 229, 255, 0.15);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, var(--ef-blue), var(--ef-pink));
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      width: fit-content;
+      margin-bottom: 0.85rem;
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--ef-yellow);
+      border-radius: 50%;
+      animation: pulse 1.4s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.6); opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--ef-yellow), var(--ef-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      max-width: 650px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .sync-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-sync {
+      background: var(--ef-yellow);
+      color: #060918;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-sync:hover {
+      background: var(--ef-cyan);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 229, 255, 0.4);
+    }
+
+    .status-text {
+      font-size: 0.8rem;
+      color: var(--ef-cyan);
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    /* GLOBAL TOTALS STRIP */
+    .totals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.9rem;
+      margin-bottom
